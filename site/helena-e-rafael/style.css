@@ -1,0 +1,394 @@
+/* Cursiva do convite (Vintage Heirloom, da PeachCreme; só os caracteres do português) */
+@font-face { font-family: 'Vintage Heirloom'; src: url(fonts/vintage-heirloom.woff2) format('woff2'); font-display: swap; }
+:root {
+  --papel: #f6f4ee; --verde: #414923; --verde-2: #4e521f; --oliva: #6e7153; --salvia: #8f9170;
+  --bege: #e6dfd5; --bege-2: #d8cfc1; --texto: #414923; --suave: #7a7c62; --azul: #2f64b8; --raio: 22px;
+  --sombra: 0 10px 30px rgb(40 44 20 / .14);
+  --cinzel: 'Cinzel', 'Times New Roman', serif; --serifa: 'Cormorant Garamond', Georgia, serif; --script: 'Vintage Heirloom', cursive;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--papel); color: var(--texto); font-family: var(--serifa); font-size: 19px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+/* Papel do convite ao fundo da página inteira (fixo, sem background-attachment: funciona no iPhone) */
+body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: var(--papel) url(img/papel.webp) center / cover; }
+h1, h2, h3 { font-weight: 400; margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; }
+img { max-width: 100%; height: auto; }
+:focus-visible { outline: 2px solid var(--verde); outline-offset: 4px; }
+[hidden] { display: none !important; }
+
+/* Nomes na cursiva do convite (vetor tirado do PDF): a cor vem de "color" */
+.nomes { display: block; aspect-ratio: 6605 / 1358; background: currentColor; margin: 0 auto;
+  -webkit-mask: url(img/nomes.svg) center / contain no-repeat; mask: url(img/nomes.svg) center / contain no-repeat; }
+
+/* Botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: 99px; padding: 14px 30px;
+  font: 600 15px var(--cinzel); letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+  transition: transform .15s, box-shadow .15s, background .15s; }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
+.btn:disabled { opacity: .6; transform: none; box-shadow: none; cursor: wait; }
+.btn-verde { background: var(--verde); color: #fff; }
+.btn-escuro { background: #2c3116; color: #fff; }
+.btn-branco { background: #fff; color: var(--verde); }
+.btn-contorno { background: rgb(255 255 255 / .35); color: var(--verde); box-shadow: inset 0 0 0 1.5px currentColor; padding: 11px 20px; font-size: 13px; }
+.btn-contorno-claro { background: none; color: #fff; box-shadow: inset 0 0 0 1.5px currentColor; }
+.acoes { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px; }
+
+/* ---------- ABERTURA: envelope ---------- */
+.abertura { display: none; }
+.js .abertura { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(10px, 2.2vh, 22px); padding: 24px 16px; overflow: hidden; text-align: center; color: var(--salvia);
+  background: var(--papel) url(img/papel.webp) center / cover; }
+.js:not(.aberto) body { overflow: hidden; } /* com o envelope fechado, a página não rola */
+.aberto .abertura { display: none; }
+.celebracao, .clique { margin: 0; font: 400 clamp(11px, 3vw, 13px) var(--cinzel); letter-spacing: .32em; text-transform: uppercase; }
+.abertura > .nomes { width: min(86vw, 520px); margin: 0 0 clamp(4px, 1.5vh, 16px); }
+.envelope { position: relative; width: min(84vw, 470px, 58vh * 1.5); aspect-ratio: 738 / 490; padding: 0; border: 0; background: none;
+  perspective: 1400px; filter: drop-shadow(0 16px 22px rgb(60 60 30 / .18)); transition: transform .3s; }
+.envelope:hover { transform: translateY(-4px) rotate(-.6deg); }
+.envelope > * { position: absolute; }
+.env-fundo { inset: 1% .5% 1%; border-radius: 3px; background: linear-gradient(#bdb49f, #d6cebd 55%); z-index: 1; }
+.env-frente { inset: 0; width: 100%; height: 100%; z-index: 3; clip-path: polygon(0 0, 50% 77.5%, 100% 0, 100% 100%, 0 100%); }
+.env-aba { inset: 0; z-index: 4; background: url(img/envelope.webp) center / 100% 100%; clip-path: polygon(0 1%, 100% 1%, 50% 77.5%);
+  transform-origin: 50% 1%; }
+.lacre { z-index: 5; left: 48.8%; top: 73%; width: 22.5%; translate: -50% -50%; filter: drop-shadow(0 3px 4px rgb(0 0 0 / .25)); }
+.envelope:not([disabled]) .lacre { animation: respirar 2.6s ease-in-out infinite; }
+.env-carta { z-index: 2; left: 5%; right: 5%; top: 5%; height: 88%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4%;
+  padding: 6%; border-radius: 3px; background: #fbfaf6 url(img/papel.webp) center / cover; box-shadow: 0 -2px 10px rgb(0 0 0 / .08); color: var(--verde); }
+.env-carta img { width: 44%; }
+.env-carta .nomes { width: 78%; }
+.carta-data { font: 400 clamp(10px, 2.6vw, 14px) var(--cinzel); letter-spacing: .3em; }
+.clique { animation: piscar 2.6s ease-in-out infinite; }
+.envelope:focus-visible { outline: none; }
+.envelope:focus-visible .lacre { outline: 2px solid var(--verde); outline-offset: 6px; border-radius: 50%; }
+/* Sequência: lacre sai → aba abre → carta sobe → a tela do envelope some */
+.abrindo .lacre { animation: lacre-sai .55s ease-in forwards; }
+.abrindo .env-aba { animation: aba-abre .8s .45s cubic-bezier(.5, 0, .3, 1) forwards; }
+.abrindo .env-carta { animation: carta-sobe 1s 1.15s cubic-bezier(.3, .7, .3, 1) forwards; }
+.abrindo .celebracao, .abrindo .clique, .abrindo .abertura > .nomes { transition: opacity .5s; opacity: 0; animation: none; }
+.abrindo .abertura { animation: sumir .9s 2.25s ease-in forwards; }
+@keyframes respirar { 50% { scale: 1.06; } }
+@keyframes piscar { 50% { opacity: .45; } }
+@keyframes lacre-sai { 30% { scale: 1.15; } 100% { scale: .4; opacity: 0; rotate: 25deg; } }
+@keyframes aba-abre { 50% { filter: brightness(.95); } 100% { transform: rotateX(180deg); filter: brightness(.82); z-index: 0; } }
+@keyframes carta-sobe { to { translate: 0 -58%; } }
+@keyframes sumir { to { opacity: 0; scale: 1.08; visibility: hidden; } }
+
+/* ---------- FOLHAS DO CONVITE ---------- */
+.folha { position: relative; overflow: hidden; padding: clamp(24px, 5vw, 48px) clamp(24px, 9vw, 64px) clamp(120px, 16vw, 170px); text-align: center; }
+.folha > :not(.deco) { position: relative; max-width: 640px; margin-inline: auto; }
+.floral { display: block; width: clamp(150px, 26vw, 210px); margin: 0 auto 10px; }
+.bencaos, .convidam, .ano { font: 400 clamp(14px, 3.6vw, 20px)/1.45 var(--cinzel); letter-spacing: .06em; margin: 0; }
+.convite .nomes.grande { width: min(100%, 500px); margin: clamp(14px, 3vw, 28px) auto clamp(18px, 3.5vw, 30px); color: var(--verde); }
+.data-faixa { display: flex; align-items: center; justify-content: center; gap: clamp(14px, 5vw, 48px); margin: clamp(14px, 3vw, 22px) auto; font-family: var(--cinzel); }
+.faixa { flex: 0 1 190px; padding: 5px 0; border-block: 2px solid var(--verde); font-size: clamp(14px, 3.8vw, 23px); letter-spacing: .08em; text-transform: uppercase; }
+.dia { font-size: clamp(30px, 8vw, 42px); line-height: 1; }
+.ano { margin-top: 4px; }
+
+/* Duas fotos com moldura (já vêm prontas do convite) e o selo recortado por cima */
+.polaroids { position: relative; width: min(100%, 560px); aspect-ratio: 715 / 557; margin: clamp(36px, 7vw, 56px) auto 0; }
+.polaroids img { position: absolute; height: auto; }
+.polaroids .p1 { left: 0; top: 0; width: 64.3%; rotate: -1deg; }
+.polaroids .p2 { left: 35.8%; top: 7.4%; width: 64.2%; rotate: .8deg; }
+.selo { position: absolute; left: 13.6%; top: 52%; width: 38.3%; aspect-ratio: 1; border: 0; padding: 0;
+  display: grid; place-items: center; background: url(img/selo.webp) center / contain no-repeat;
+  font: 400 clamp(10px, 2.6vw, 16.8px)/1.45 var(--cinzel); letter-spacing: .06em; text-transform: uppercase; color: var(--verde-2);
+  filter: drop-shadow(0 6px 10px rgb(60 60 30 / .18)); transition: scale .25s, rotate .25s; }
+.selo:hover, .selo:focus-visible { scale: 1.06; rotate: -4deg; }
+.selo:not(:disabled) { animation: respirar 3s 2.5s ease-in-out infinite; }
+.selo:disabled { cursor: default; animation: none; }
+/* Nossa história: a foto da frente começa depois do noivo (ele vai até ~80% da largura da foto de trás) */
+.polaroids.duas { width: min(100%, 560px); aspect-ratio: 1 / .655; margin: 20px auto 28px; }
+.polaroids.duas .p1 { width: 56%; }
+.polaroids.duas .p2 { left: 45%; top: 16%; width: 55%; }
+
+/* Prazo de confirmação (contagem regressiva) */
+.prazo { margin: clamp(40px, 7vw, 56px) auto 0; padding: 20px 16px; max-width: 440px !important; border-radius: var(--raio);
+  background: rgb(230 223 213 / .6); box-shadow: inset 0 0 0 1px rgb(65 73 35 / .12); }
+.prazo-titulo { margin: 0 0 14px; font: 400 15px/1.4 var(--cinzel); letter-spacing: .05em; }
+.prazo-titulo b { font-weight: 600; }
+.relogio { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font: 400 11px var(--cinzel); letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
+.relogio span { background: rgb(255 255 255 / .75); border-radius: 12px; padding: 8px 4px 7px; }
+.relogio b { display: block; font: 400 28px/1.15 var(--cinzel); color: var(--verde); font-variant-numeric: tabular-nums; }
+.prazo:has(.relogio[hidden]) .prazo-titulo { margin: 0; font-weight: 600; }
+
+/* Lista de presentes (caixinha) */
+.lista { display: flex; flex-direction: column; align-items: center; gap: 10px; width: fit-content; margin: clamp(48px, 8vw, 72px) auto 0; padding: 0; border: 0; background: none;
+  font: 400 clamp(13px, 3.4vw, 18px)/1.25 var(--cinzel); letter-spacing: .05em; color: var(--verde-2); }
+.lista img { width: clamp(100px, 16vw, 135px); transition: rotate .3s, translate .3s; }
+.lista:hover img, .lista:focus-visible img { rotate: -6deg; translate: 0 -4px; }
+.lista:hover span { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Ramos e azulejo nas bordas, nas medidas do convite (PDF com 1024 de largura): o tamanho acompanha a largura da tela
+   e as peças passam um pouco da borda, como no papel */
+.deco { position: absolute; pointer-events: none; user-select: none; z-index: 0; }
+.deco { --ol: clamp(78px, 13.6vw, 160px); --az: calc(var(--ol) * .753); }
+.oliveira { right: calc(var(--ol) * -.136); top: 0; width: var(--ol); }
+.azulejo { right: calc(var(--az) * -.31); top: calc(var(--ol) * 1.037); width: var(--az); }
+.convite .oliveira { top: 37%; }
+.convite .azulejo { top: calc(37% + var(--ol) * 1.037); }
+/* Canto de baixo à esquerda: a ponta de cada caule fica colada no canto da tela e as flores se inclinam para dentro.
+   transform-origin = ponta do caule na imagem; o translate leva essa ponta exatamente ao canto e o giro é em torno dela */
+.canto { left: 0; bottom: 0; width: clamp(120px, 22.4vw, 260px); aspect-ratio: 230 / 193.75; }
+.canto img { position: absolute; left: 0; bottom: 0; height: auto; }
+.lavanda { width: 46.3%; transform-origin: 37.2% 99%; translate: -37.2% 1%; rotate: 24deg; }
+.flor { width: 34.3%; transform-origin: 49.4% 98.7%; translate: -49.4% 1.3%; rotate: 50deg; }
+/* Fim da página (Nossa história): o canto exatamente como no PDF, com a sardinha deitada na borda, logo acima do rodapé.
+   Centro, largura e giro de cada peça copiados do PDF, em % de uma área de 230 × 194 */
+.com-peixe img { left: auto; bottom: auto; transform-origin: 50% 50%; translate: -50% -50%; }
+.com-peixe .lavanda { left: 19.65%; top: 66.1%; width: 46.3%; rotate: 24deg; }
+.com-peixe .flor { left: 30.2%; top: 71.4%; width: 34.3%; rotate: 47.4deg; }
+.com-peixe .sardinha { left: 67%; top: 89.8%; width: 60.3%; scale: -1 1; }
+
+/* Cerimônia e história */
+.titulo { font: 500 clamp(44px, 11vw, 66px)/.95 var(--cinzel); color: var(--verde-2); margin-bottom: clamp(20px, 4vw, 30px); }
+.titulo span { display: block; font-size: .74em; }
+.texto { font: 400 clamp(13.5px, 3.5vw, 15.5px)/1.6 var(--cinzel); letter-spacing: .05em; color: var(--verde-2); }
+.texto p { margin: 0 0 .9em; }
+.traje { display: inline-flex; gap: 10px; align-items: center; margin: 6px 0 0; padding: 8px 18px; border-radius: 99px; background: rgb(230 223 213 / .7);
+  font: 400 14px var(--cinzel); letter-spacing: .08em; text-transform: uppercase; }
+.traje b { font-weight: 600; }
+.subtitulo { margin: clamp(34px, 6vw, 48px) 0 12px; font: 500 clamp(14px, 3.4vw, 17px) var(--cinzel); letter-spacing: .06em; text-transform: uppercase; }
+.mapa { position: relative; display: block; max-width: 600px !important; box-shadow: var(--sombra); border-radius: 4px; overflow: hidden; }
+.mapa img { display: block; width: 100%; height: auto; transition: scale .6s; }
+.mapa:hover img { scale: 1.03; }
+.mapa iframe { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; }
+.mapa-dica { position: absolute; right: 10px; bottom: 10px; padding: 6px 12px; border-radius: 99px; background: rgb(255 255 255 / .9);
+  font: 600 11px var(--cinzel); letter-spacing: .08em; text-transform: uppercase; color: var(--verde); }
+
+.presente-ico { display: block; width: 96px; height: auto; margin: 0 auto 8px; }
+.verde h2 { font: 500 clamp(28px, 7vw, 42px)/1.1 var(--cinzel); margin: 4px auto 12px; }
+.visualmente-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* LISTA DE PRESENTES (modal em papel claro, como o convite) */
+dialog.lista-dialog { background: var(--papel) url(img/papel.webp) center / cover; color: var(--texto); }
+.lista-dialog .fechar { color: var(--verde); }
+.lista-janela { max-width: 1040px; margin: 0 auto; padding: 40px 16px 56px; }
+.lista-topo { text-align: center; margin-bottom: 18px; }
+.lista-topo h2 { font: 400 clamp(22px, 6vw, 32px) var(--cinzel); letter-spacing: .22em; text-transform: uppercase; color: var(--verde-2); }
+.lista-sub { max-width: 520px; margin: 10px auto 0; color: var(--suave); line-height: 1.35; }
+/* A barra (carrinho, busca, ordem) fica presa no alto enquanto rola a lista */
+.lista-barra { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between;
+  margin: 0 -16px 10px; padding: 12px 16px; background: rgb(246 244 238 / .95); backdrop-filter: blur(6px); }
+.carrinho-btn { padding: 11px 20px; font-size: 13px; }
+.lista-busca { flex: 1 1 200px; max-width: 360px; }
+.lista-busca input { width: 100%; font: inherit; font-size: 17px; padding: 9px 16px; border: 1.5px solid var(--salvia); border-radius: 99px; background: #fff; color: var(--texto); }
+.lista-ordem { display: flex; align-items: center; gap: 8px; font: 400 12px var(--cinzel); letter-spacing: .06em; text-transform: uppercase; color: var(--suave); }
+.lista-ordem select { font: 500 17px var(--serifa); padding: 7px 10px; border: 1.5px solid var(--salvia); border-radius: 10px; background: #fff; color: var(--texto); }
+.produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.produto { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 12px 14px; border-radius: 14px; background: #fff;
+  box-shadow: 0 2px 10px rgb(40 44 20 / .08); text-align: center; transition: box-shadow .2s, translate .2s; }
+.produto:hover { translate: 0 -3px; box-shadow: 0 10px 24px rgb(40 44 20 / .14); }
+.produto img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 10px; background: #fff; }
+.produto h4 { flex: 1; display: grid; place-items: center; margin: 2px 0 0; font: 500 16px/1.2 var(--serifa); color: var(--texto); }
+.preco { margin: 0; font: 600 16px var(--cinzel); color: var(--verde); }
+.produto .btn { width: 100%; padding: 10px 12px; font-size: 12px; }
+.produto .btn-contorno { background: var(--bege); }
+.lista-vazia { text-align: center; color: var(--suave); }
+.ver-mais { margin: 28px 0 0; text-align: center; }
+.ver-mais p { margin: 0 0 10px; font: 400 12px var(--cinzel); letter-spacing: .08em; text-transform: uppercase; color: var(--suave); }
+.ver-mais .btn { min-width: min(100%, 280px); }
+.lista-outro { text-align: center; margin: 28px 0 0; }
+.outro { background: none; border: none; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; font-size: 19px; }
+/* Carrinho */
+.carrinho { max-width: 640px; margin: 0 auto; padding: 22px 20px; border-radius: 18px; background: #fff; box-shadow: var(--sombra); }
+.carrinho h3 { margin-bottom: 14px; font: 500 22px var(--cinzel); color: var(--verde-2); }
+.carrinho-cab { display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid #e4e1d8; font-size: 15px; font-weight: 600; color: var(--suave); }
+.carrinho-itens { list-style: none; margin: 0; padding: 0; }
+.carrinho-itens li { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid #efece5; }
+.carrinho-itens img { width: 64px; height: 64px; object-fit: contain; border: 1px solid #eee; border-radius: 8px; background: #fff; }
+.carrinho-itens span { display: block; line-height: 1.25; }
+.carrinho-itens b { font-weight: 600; white-space: nowrap; }
+.remover { margin-top: 4px; padding: 0; border: 0; background: none; color: #a3261c; font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
+.carrinho-vazio { padding: 18px 0; text-align: center; color: var(--suave); }
+.carrinho-total { margin: 14px 0 0; text-align: right; font-size: 18px; }
+.carrinho-total b { margin-left: 8px; font: 600 20px var(--cinzel); color: var(--verde); }
+.carrinho .acoes { justify-content: flex-end; }
+/* Resumo dos itens no Pix (vindo do carrinho: valor fixo) */
+.pix-itens { list-style: none; max-height: 180px; overflow: auto; margin: 4px 0 6px; padding: 10px 14px; border-radius: 12px; background: var(--bege); font-size: 16px; }
+.pix-itens li { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; }
+.pix-itens b { white-space: nowrap; }
+.valor-campo input:read-only { width: 8ch; padding-inline: 0; border-color: transparent; background: transparent; text-align: left; }
+/* Celular: barra da lista em 2 linhas (carrinho + ordem, depois a busca) para sobrar espaço para os presentes */
+@media (max-width: 599px) {
+  .lista-barra { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding-block: 10px; }
+  .lista-busca { grid-column: 1 / -1; grid-row: 2; max-width: none; }
+  .lista-ordem span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .carrinho-btn { justify-content: flex-start; }
+}
+
+/* Rodapé verde com os nomes */
+/* No celular o botão flutuante fica centralizado embaixo: a folga para ele fica dentro do verde, sem faixa branca depois */
+.rodape { padding: 30px 16px calc(26px + 72px + env(safe-area-inset-bottom)); text-align: center; color: #fff; background: var(--oliva) url(img/rodape.webp) center / cover; }
+.rodape .nomes { width: min(72vw, 330px); }
+.rodape p { margin: 10px 0 0; font: 400 12px var(--cinzel); letter-spacing: .3em; text-transform: uppercase; opacity: .9; }
+
+/* BOTÕES FLUTUANTES (lista de presentes + confirmação). Celular: lado a lado embaixo; computador: empilhados à direita */
+.flutuantes { position: fixed; z-index: 10; left: 16px; right: 16px; bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex; gap: 8px; justify-content: center; pointer-events: none; }
+.flutuante { pointer-events: auto; padding: 14px 18px; font-size: 12.5px; white-space: nowrap; box-shadow: 0 6px 20px rgb(0 0 0 / .28); }
+.flutuante-lista { flex: none; background: #fffdf8; color: var(--verde); box-shadow: inset 0 0 0 1.5px var(--verde), 0 6px 20px rgb(0 0 0 / .18); }
+.flutuante-lista .icone { width: 1.35em; height: 1.35em; }
+.flutuante-lista .rotulo-longo { display: none; }
+.aberto .flutuante-lista { animation: entrar .6s 1s both; }
+.js:not(.aberto) .flutuantes { visibility: hidden; }
+@media (max-width: 379px) { .flutuantes { left: 10px; right: 10px; gap: 6px; } .flutuante { padding: 13px 12px; font-size: 11.5px; } }
+.aberto .flutuante.pulsar { animation: entrar .6s 1.2s both, pulso 2.8s 2.4s infinite; }
+.flutuante.confirmado { background: #fff; color: var(--verde); box-shadow: inset 0 0 0 1.5px var(--verde), 0 6px 20px rgb(0 0 0 / .15); }
+.aberto .flutuante.confirmado { animation: entrar .6s 1.2s both; }
+.flutuante.confirmado:disabled { opacity: 1; cursor: default; }
+@keyframes pulso { 0% { box-shadow: 0 6px 20px rgb(0 0 0 / .28), 0 0 0 0 rgb(65 73 35 / .45); } 70%, 100% { box-shadow: 0 6px 20px rgb(0 0 0 / .28), 0 0 0 16px rgb(65 73 35 / 0); } }
+
+/* Janela "Tem certeza?" */
+dialog.alerta { width: min(92vw, 440px); height: fit-content; max-height: 92vh; margin: auto; padding: 28px 24px; border-radius: 24px; background: #fffdf8; text-align: center; }
+.alerta h2 { font: 500 22px/1.25 var(--cinzel); color: var(--verde); margin-bottom: 16px; }
+.resumo { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 0 0 16px; padding: 14px; border-radius: 12px; background: var(--bege); text-align: left; font-size: 18px; }
+.resumo dt { color: var(--suave); }
+.resumo dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.aviso-final { margin: 0 0 16px; line-height: 1.35; }
+.alerta .btn { display: flex; width: 100%; margin-top: 10px; }
+
+/* DIALOGS */
+dialog { border: none; padding: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%; background: var(--verde); color: var(--texto); }
+dialog[open] { animation: surgir .25s ease-out; }
+@keyframes surgir { from { opacity: 0; transform: translateY(16px); } }
+html:has(dialog[open]) { overflow: hidden; } /* com janela aberta, só ela rola (evita 2 barras de rolagem) */
+dialog::backdrop { background: rgb(20 22 10 / .6); }
+.janela { max-width: 560px; margin: 0 auto; padding: 56px 16px 48px; }
+.caixa { background: #fffdf8 url(img/papel.webp) center / cover; border-radius: 28px; padding: 28px 22px 30px; }
+.caixa-floral { display: block; width: 130px; height: auto; margin: -6px auto 6px; }
+.caixa h2 { font: 500 clamp(22px, 6vw, 28px)/1.2 var(--cinzel); text-align: center; margin-bottom: 8px; }
+.caixa-sub { text-align: center; margin: 0 0 22px; color: var(--suave); }
+.fechar:focus-visible { outline-color: #fff; }
+.fechar { position: fixed; top: 8px; right: 12px; z-index: 1; background: none; border: none; color: #fff; font-size: 40px; line-height: 1; padding: 8px 12px; }
+fieldset { border: none; padding: 0; margin: 0 0 22px; min-width: 0; }
+legend, label.campo { display: block; margin-bottom: 8px; line-height: 1.25; padding: 0; font-weight: 600; }
+legend b, label.campo b { font-weight: 400; color: var(--suave); }
+.nota { display: block; margin-top: 6px; color: var(--suave); font-size: 16px; }
+/* Sugestões de nomes da lista de convidados, logo abaixo do campo */
+.sugestoes { display: grid; gap: 6px; margin-top: 8px; }
+.sugestoes button { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 14px; border: 0; border-radius: 10px;
+  background: var(--bege); text-align: left; font-size: 18px; font-weight: 600; color: var(--verde); }
+.sugestoes button::after { content: 'É você? Toque aqui'; font: 400 11px var(--cinzel); letter-spacing: .06em; text-transform: uppercase; color: var(--suave); white-space: nowrap; }
+.sugestoes button:hover, .sugestoes button:focus-visible { background: var(--bege-2); outline: 2px solid var(--verde); outline-offset: 1px; }
+.op { display: flex; align-items: center; gap: 10px; margin: 8px 0; cursor: pointer; }
+.op input { width: 22px; height: 22px; accent-color: var(--verde); margin: 0; }
+input[type=text], input[type=email], input[type=tel], input[type=number], textarea.recado { width: 100%; font: inherit; padding: 11px 12px; border: 1.5px solid var(--salvia); border-radius: 10px; background: #fff; color: var(--texto); }
+input:focus-visible, textarea:focus-visible { outline: 2px solid var(--verde); outline-offset: 1px; border-color: var(--verde); }
+textarea.recado { resize: vertical; min-height: 88px; }
+.armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; } /* só robôs preenchem */
+input[type=text]:disabled { background: #f1efe9; border-color: #d4d2c6; }
+.erro { color: #a3261c; font-weight: 600; min-height: 1.2em; text-align: center; }
+.caixa .btn { display: flex; width: 100%; margin-top: 12px; font-size: 16px; }
+.verde { color: #fff; text-align: center; }
+.verde p { margin: 0 0 26px; }
+.verde .presente-ico { width: 110px; }
+.verde .btn-contorno-claro { margin-top: 8px; }
+
+/* PIX */
+.valor-campo { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 12px 0 16px; font: 500 34px var(--cinzel); color: var(--verde); }
+.valor-campo input { width: 170px; font: 500 34px var(--cinzel); color: var(--verde); text-align: center; padding: 4px 8px; }
+.pix-grid { display: grid; gap: 16px; }
+.formas { margin: 0 0 16px; }
+.cartao-mp { margin-top: 16px; min-height: 120px; }
+.qr { display: none; text-align: center; font-size: 16px; color: var(--suave); }
+.qr svg { width: 220px; height: auto; display: block; margin: 0 auto 8px; }
+.passos { padding-left: 22px; margin: 0 0 12px; line-height: 1.4; }
+.pix-codigo { width: 100%; font: 13px/1.3 monospace; padding: 10px; border: 1.5px solid #d4d2c6; border-radius: 10px; resize: none; word-break: break-all; color: var(--suave); background: #fff; }
+.ok { color: var(--verde); }
+.aviso { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 2;
+  display: flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 99px; background: var(--verde); color: #fff;
+  font-weight: 600; font-size: 18px; white-space: nowrap; box-shadow: 0 10px 30px rgb(0 0 0 / .3);
+  opacity: 0; translate: -50% 20px; pointer-events: none; transition: opacity .25s, translate .25s; }
+.aviso.mostrar { opacity: 1; translate: -50% 0; }
+.btn.copiado { background: var(--oliva); }
+
+/* ANIMAÇÕES DE ENTRADA (depois que o envelope abre) */
+@keyframes subir { from { opacity: 0; translate: 0 18px; } }
+@keyframes entrar { from { opacity: 0; translate: 0 24px; } }
+@keyframes brotar { from { opacity: 0; rotate: -10deg; scale: .85; } }
+.js:not(.aberto) .entra, .js:not(.aberto) .convite .floral { opacity: 0; }
+.aberto .convite .floral { transform-origin: 50% 100%; animation: brotar 1s .15s ease-out both; }
+.aberto .entra { animation: subir .9s ease-out both; }
+.aberto .bencaos { animation-delay: .35s; } .aberto .nomes.grande { animation-delay: .55s; } .aberto .convidam { animation-delay: .8s; }
+.aberto .data-faixa { animation-delay: .95s; } .aberto .ano { animation-delay: 1.1s; }
+.js [data-revelar] { transition: opacity .9s ease, translate .9s ease; transition-delay: calc(var(--i, 0) * 90ms); }
+.js [data-revelar]:not(.visivel) { opacity: 0; translate: 0 28px; }
+.js .deco { transition: opacity 1.2s ease .2s, translate 1.2s ease .2s; }
+.js .folha:not(.visivel) .oliveira, .js .folha:not(.visivel) .azulejo { opacity: 0; translate: 30px 0; }
+.js .folha:not(.visivel) .canto { opacity: 0; translate: -30px 0; }
+
+/* DESKTOP */
+@media (min-width: 900px) {
+  .produtos { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+  .rodape { padding-bottom: 26px; }
+  .flutuantes { left: auto; right: 32px; bottom: 32px; flex-direction: column; align-items: stretch; gap: 10px; }
+  .flutuante { padding: 16px 28px; font-size: 15px; }
+  .flutuante-lista .rotulo-longo { display: inline; }
+  .flutuante-lista .rotulo-curto { display: none; }
+  dialog { background: rgb(65 73 35 / .97); }
+  .janela { padding-top: 64px; }
+  .pix-grid { grid-template-columns: 240px 1fr; align-items: center; }
+  .qr { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition: none !important; scroll-behavior: auto !important; }
+  .js [data-revelar]:not(.visivel), .js .folha:not(.visivel) .deco { opacity: 1; translate: none; }
+}
+
+/* REGISTRE O MOMENTO (página secreta das fotos da festa) */
+.momento { max-width: 560px; margin: 0 auto; padding: 36px 20px 48px; text-align: center; }
+.momento header { position: relative; }
+.folha-topo { width: 170px; height: auto; }
+.momento header .nomes { width: min(80vw, 300px); color: var(--verde); margin-top: 6px; }
+.momento h1 { font: 500 clamp(32px, 10vw, 52px)/1.05 var(--cinzel); color: var(--verde-2); margin: 10px 0 12px; }
+.momento h2 { font: 500 clamp(24px, 7vw, 32px) var(--cinzel); color: var(--verde-2); margin: 40px 0 8px; }
+.sub-momento { color: var(--suave); margin: 0 auto 16px; max-width: 420px; }
+.bloqueado { margin-top: 32px; color: var(--verde); font-weight: 600; font-size: 21px; }
+.enviar { display: grid; gap: 8px; margin-top: 24px; padding: 24px 20px; border-radius: 24px; background: #fffdf8; box-shadow: var(--sombra); text-align: left; }
+.enviar label.campo { margin: 8px 0 0; }
+.botao-foto { margin-top: 16px; padding: 18px; font-size: 17px; cursor: pointer; }
+.botao-galeria { justify-content: center; padding: 14px; font-size: 14px; cursor: pointer; }
+.status { min-height: 1.3em; margin: 4px 0 0; text-align: center; color: var(--verde); font-weight: 600; }
+.ornamento { display: flex; align-items: center; justify-content: center; gap: 12px; max-width: 240px; margin: 0 auto 4px; color: var(--salvia); font-size: 12px; }
+.ornamento::before, .ornamento::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--salvia)); }
+.ornamento::after { transform: scaleX(-1); }
+/* Mural: quadro com polaroids presas por fita, cada uma levemente inclinada */
+.mural-secao { margin-top: 40px; padding: 28px 14px 32px; border-radius: 28px; background: rgb(230 223 213 / .7); box-shadow: inset 0 0 0 1px rgb(65 73 35 / .12); }
+.mural-secao h2 { margin-top: 0; }
+.contador { margin: 0 0 12px; font-family: var(--script); font-size: 34px; color: var(--verde); }
+.mural { columns: 2 140px; column-gap: 14px; margin-top: 24px; text-align: left; }
+.mural figure { position: relative; break-inside: avoid; margin: 0 0 22px; padding: 8px 8px 0; background: #fff; border-radius: 3px;
+  box-shadow: 0 10px 22px rgb(0 0 0 / .14); rotate: var(--giro, 0deg); transition: rotate .3s, scale .3s, box-shadow .3s; }
+.mural figure:hover, .mural figure:focus-within { rotate: 0deg; scale: 1.04; z-index: 1; box-shadow: 0 18px 34px rgb(0 0 0 / .22); }
+.mural figure::before { content: ''; position: absolute; top: -11px; left: 50%; width: 64px; height: 22px; translate: -50% 0; rotate: var(--fita, 0deg);
+  background: rgb(214 208 190 / .85); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
+.mural figure.nova { animation: cair .8s calc(var(--i, 0) * 90ms) cubic-bezier(.2, .9, .3, 1.2) both; }
+@keyframes cair { from { opacity: 0; translate: 0 -60px; rotate: calc(var(--giro, 0deg) - 14deg); } }
+.mural button { display: block; width: 100%; padding: 0; border: 0; background: #e8e5dc; }
+.mural img { display: block; width: 100%; height: auto; }
+.mural figcaption { display: flex; flex-direction: column; padding: 8px 4px 10px; text-align: center; }
+.mural .frase { font-size: 16px; color: var(--texto); line-height: 1.2; }
+.mural .autor { font-family: var(--script); font-size: 34px; line-height: 1.1; color: var(--verde); }
+/* Modo telão */
+dialog.telao { background: radial-gradient(circle at 50% 40%, #5a6134, #1d2010); }
+.telao figure { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; height: 100%; margin: 0; padding: 48px 24px; }
+.telao img { max-width: 92vw; max-height: 74vh; border: 12px solid #fff; box-shadow: 0 24px 60px rgb(0 0 0 / .55); rotate: -1.5deg; }
+.telao figcaption { font-family: var(--script); font-size: clamp(36px, 5vw, 64px); color: #fff; text-align: center; }
+.telao-qr { position: fixed; right: 24px; bottom: 24px; padding: 10px; border-radius: 12px; background: #fff; color: var(--verde); font-weight: 700; text-align: center; }
+.telao-qr svg { display: block; width: 130px; height: auto; }
+.telao-qr p { margin: 4px 0 0; }
+@media (max-width: 700px) { .telao-qr { display: none; } }
+dialog.foto-ampliada { background: rgb(0 0 0 / .94); }
+.foto-ampliada img { display: block; max-width: 100%; max-height: 82vh; margin: 56px auto 12px; border-radius: 8px; }
+.foto-ampliada p { margin: 0 16px 24px; color: #fff; text-align: center; }
+@media (min-width: 900px) {
+  .momento { max-width: 1000px; }
+  .enviar { max-width: 560px; margin-inline: auto; }
+  .mural { columns: 4 200px; column-gap: 22px; }
+  .mural-secao { padding: 36px 32px 40px; }
+}
+
+/* Ícones de traço nos botões (herdam a cor do texto) */
+.icone { width: 1.25em; height: 1.25em; flex: none; }

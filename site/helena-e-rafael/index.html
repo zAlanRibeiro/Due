@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helena & Rafael · Casamento</title>
+<meta name="description" content="Convite de casamento de Helena e Rafael — sábado, 14 de outubro de 2028, às 16h, na Capela Nossa Senhora das Oliveiras, Santa Teresa, Rio de Janeiro.">
+<meta name="theme-color" content="#414923">
+<link rel="icon" href="img/lacre.webp" type="image/webp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Helena & Rafael · Casamento">
+<meta property="og:description" content="Sábado, 14 de outubro de 2028, às 16h, na Capela Nossa Senhora das Oliveiras (Santa Teresa, RJ). Abra o convite e confirme sua presença.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preload" href="img/envelope.webp" as="image">
+<script src="vendor/qrcode.js" defer></script> <!-- qrcode-generator 1.4.4 (MIT), servido daqui: página de pagamento não depende de CDN externo -->
+<script>document.documentElement.classList.add('js')</script>
+<script src="../demo.js"></script> <!-- modo demonstração do portfólio -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ABERTURA: envelope com lacre (1ª página do convite em PDF) -->
+<div class="abertura" data-abertura>
+  <p class="celebracao">A celebração do amor de</p>
+  <h1 class="nomes" role="img" aria-label="Helena e Rafael"></h1>
+  <button class="envelope" type="button" data-envelope aria-label="Abrir o convite">
+    <span class="env-fundo"></span>
+    <span class="env-carta" aria-hidden="true">
+      <img src="img/floral.webp" alt="" width="592" height="270">
+      <span class="nomes"></span>
+      <span class="carta-data">14 · 10 · 2028</span>
+    </span>
+    <img class="env-frente" src="img/envelope.webp" alt="" width="738" height="490">
+    <span class="env-aba"></span>
+    <img class="lacre" src="img/lacre.webp" alt="" width="201" height="209">
+  </button>
+  <p class="clique">Clique no envelope para abrir</p>
+</div>
+
+<main>
+  <!-- CONVITE -->
+  <section class="folha convite" id="convite">
+    <img class="deco oliveira" src="img/oliveira.webp" alt="" width="255" height="281">
+    <img class="deco azulejo" src="img/azulejo.webp" alt="" width="223" height="233">
+    <div class="deco canto" aria-hidden="true"><img class="lavanda" src="img/lavanda.webp" alt="" width="242" height="497"><img class="flor" src="img/flor.webp" alt="" width="168" height="446"></div>
+
+    <img class="floral" src="img/floral.webp" alt="" width="592" height="270">
+    <p class="bencaos entra">Com as bênçãos de Deus e de suas famílias</p>
+    <h2 class="nomes grande entra" role="img" aria-label="Helena e Rafael"></h2>
+    <p class="convidam entra">Convidam para a celebração de seu casamento</p>
+    <p class="data-faixa entra" aria-label="Sábado, 14 de outubro de 2028">
+      <span class="faixa">Sábado</span><span class="dia">14</span><span class="faixa">Outubro</span>
+    </p>
+    <p class="ano entra">dois mil e vinte e oito<br>às dezesseis horas</p>
+
+    <div class="polaroids" data-revelar>
+      <img class="p1" src="img/foto1.webp" alt="Helena e Rafael sentados em uma praça de pedras, entre casas brancas" width="900" height="900" loading="lazy">
+      <img class="p2" src="img/foto2.webp" alt="Helena e Rafael se beijando na mesma praça" width="900" height="899" loading="lazy">
+      <button class="selo" type="button" data-abrir-rsvp><span data-selo-texto>Confirme<br>sua<br>presença<br>aqui</span></button>
+    </div>
+
+    <div class="prazo" data-prazo data-revelar>
+      <p class="prazo-titulo">Confirme sua presença até <b>14 de setembro</b></p>
+      <div class="relogio" role="timer" aria-label="Tempo restante para confirmar presença">
+        <span><b>00</b>dias</span><span><b>00</b>horas</span><span><b>00</b>min</span><span><b>00</b>seg</span>
+      </div>
+      <div class="acoes">
+        <a class="btn btn-contorno" data-agenda target="_blank" rel="noopener">＋ Salvar na agenda</a>
+        <a class="btn btn-contorno" href="#cerimonia">Ver local</a>
+      </div>
+    </div>
+
+    <button class="lista" type="button" data-abrir-lista data-revelar>
+      <img src="img/presente.webp" alt="" width="360" height="379" loading="lazy">
+      <span>Clique aqui para acessar<br>nossa lista de presentes</span>
+    </button>
+  </section>
+
+  <!-- CERIMÔNIA -->
+  <section class="folha cerimonia" id="cerimonia" aria-labelledby="t-cerimonia">
+    <img class="deco oliveira" src="img/oliveira.webp" alt="" width="255" height="281" loading="lazy">
+    <img class="deco azulejo" src="img/azulejo.webp" alt="" width="223" height="233" loading="lazy">
+    <div class="deco canto" aria-hidden="true"><img class="lavanda" src="img/lavanda.webp" alt="" width="242" height="497" loading="lazy"><img class="flor" src="img/flor.webp" alt="" width="168" height="446" loading="lazy"></div>
+
+    <img class="floral" src="img/floral.webp" alt="" width="592" height="270" loading="lazy" data-revelar>
+    <h2 class="titulo" id="t-cerimonia" data-revelar>Nossa <span>cerimônia</span></h2>
+    <div class="texto" data-revelar>
+      <p>A cerimônia terá início às 16h, na Capela Nossa Senhora das Oliveiras, Santa Teresa - RJ.</p>
+      <p>Após o nosso “sim”, os convidados serão recebidos no jardim da Capela.</p>
+      <p>Pedimos, gentilmente, que cores brancas, bege, marfim e off white sejam evitadas.</p>
+    </div>
+    <p class="traje" data-revelar><b>Traje</b> passeio completo</p>
+
+    <h3 class="subtitulo" data-revelar>Para não errar o local</h3>
+    <div class="mapa" data-revelar>
+      <iframe title="Mapa de Santa Teresa, Rio de Janeiro" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Santa%20Teresa%2C%20Rio%20de%20Janeiro&z=15&output=embed"></iframe>
+    </div>
+    <div class="acoes centro" data-revelar>
+      <a class="btn btn-verde" href="https://www.google.com/maps/dir/?api=1&destination=Santa%20Teresa%2C%20Rio%20de%20Janeiro" target="_blank" rel="noopener">Como chegar</a>
+      <a class="btn btn-contorno" href="https://waze.com/ul?q=Santa%20Teresa%2C%20Rio%20de%20Janeiro&navigate=yes" target="_blank" rel="noopener">Waze</a>
+    </div>
+  </section>
+
+  <!-- NOSSA HISTÓRIA -->
+  <section class="folha historia" id="historia" aria-labelledby="t-historia">
+    <img class="deco oliveira" src="img/oliveira.webp" alt="" width="255" height="281" loading="lazy">
+    <img class="deco azulejo" src="img/azulejo.webp" alt="" width="223" height="233" loading="lazy">
+    <div class="deco canto com-peixe" aria-hidden="true"><img class="lavanda" src="img/lavanda.webp" alt="" width="242" height="497" loading="lazy"><img class="flor" src="img/flor.webp" alt="" width="168" height="446" loading="lazy"><img class="sardinha" src="img/sardinha.webp" alt="" width="363" height="103" loading="lazy"></div>
+
+    <img class="floral" src="img/floral.webp" alt="" width="592" height="270" loading="lazy" data-revelar>
+    <h2 class="titulo" id="t-historia" data-revelar>Nossa <span>história</span></h2>
+    <div class="polaroids duas" data-revelar>
+      <img class="p1" src="img/foto3.webp" alt="Helena e Rafael pulando de alegria à beira da água, em um dia nublado" width="700" height="700" loading="lazy">
+      <img class="p2" src="img/foto4.webp" alt="Helena e Rafael de braços abertos à beira da água" width="700" height="699" loading="lazy">
+    </div>
+    <div class="texto" data-revelar>
+      <p>Nossa história começou em 2023, numa livraria antiga de Lisboa. Os dois estenderam a mão para o mesmo livro de poemas e, em vez de disputá-lo, resolveram dividir um café para conversar sobre ele.</p>
+      <p>Helena terminava um intercâmbio; Rafael, de férias, tinha só mais quatro dias na cidade. Bastaram esses dias, entre bondinhos, miradouros e pastéis de nata, para que a despedida no aeroporto virasse um “até logo”.</p>
+      <p>De volta ao Brasil, as mensagens viraram encontros, os encontros viraram planos, e Portugal virou destino obrigatório de todo aniversário de namoro.</p>
+      <p>O que começou com um livro dividido cresceu com leveza, parceria e amor — e agora ganha o seu capítulo mais bonito.</p>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <span class="nomes" role="img" aria-label="Helena e Rafael"></span>
+    <p>Esperamos por você!</p>
+  </footer>
+</main>
+
+<!-- Botões fixos na tela: lista de presentes e confirmação (no celular, lado a lado embaixo) -->
+<div class="flutuantes">
+  <button class="btn flutuante flutuante-lista" type="button" data-abrir-lista aria-label="Lista de presentes">
+    <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 5 12 8c0-3 2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+    <span class="rotulo-longo">Lista de presentes</span><span class="rotulo-curto" aria-hidden="true">Presentes</span>
+  </button>
+  <button class="btn btn-verde flutuante" data-abrir-rsvp data-flutuante>Confirmar presença</button>
+</div>
+
+<!-- LISTA DE PRESENTES: escolhe os itens, vê o carrinho e finaliza com um Pix do total (itens em presentes.js) -->
+<dialog id="lista" class="lista-dialog" aria-labelledby="t-lista">
+  <button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div class="lista-janela">
+    <header class="lista-topo">
+      <img class="caixa-floral" src="img/floral.webp" alt="" width="592" height="270">
+      <h2 id="t-lista">Lista de presentes</h2>
+      <p class="lista-sub">Sua presença é o nosso maior presente. Se quiser nos presentear, escolha os itens e finalize com um Pix.</p>
+    </header>
+
+    <section data-vitrine>
+      <div class="lista-barra">
+        <button class="btn btn-verde carrinho-btn" type="button" data-ver-carrinho>
+          <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          <span data-carrinho-rotulo>Ver carrinho</span>
+        </button>
+        <label class="lista-busca"><span class="visualmente-oculto">Buscar presente</span><input type="search" placeholder="Buscar presente" data-busca></label>
+        <label class="lista-ordem"><span>Ordenar por</span>
+          <select data-ordem>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+            <option value="menor">Menor valor</option>
+            <option value="maior">Maior valor</option>
+          </select>
+        </label>
+      </div>
+      <div class="produtos" data-produtos></div>
+      <p class="lista-vazia" data-lista-vazia hidden>Nenhum presente encontrado.</p>
+      <div class="ver-mais" data-ver-mais-bloco hidden>
+        <p data-ver-mais-contagem aria-live="polite"></p>
+        <button class="btn btn-contorno" type="button" data-ver-mais>Ver mais presentes</button>
+      </div>
+      <p class="lista-outro"><button class="outro" type="button" data-outro>Prefere presentear com outro valor?</button></p>
+    </section>
+
+    <section class="carrinho" data-carrinho hidden aria-labelledby="t-carrinho">
+      <h3 id="t-carrinho">Meu carrinho</h3>
+      <div class="carrinho-cab" aria-hidden="true"><span>Descrição do presente</span><span>Valor</span></div>
+      <ul class="carrinho-itens" data-carrinho-itens></ul>
+      <p class="carrinho-vazio" data-carrinho-vazio>Seu carrinho está vazio.</p>
+      <p class="carrinho-total">Total <b data-carrinho-total>R$ 0,00</b></p>
+      <p class="erro" role="alert" data-carrinho-erro></p>
+      <div class="acoes">
+        <button class="btn btn-contorno" type="button" data-voltar-lista>Adicionar mais itens</button>
+        <button class="btn btn-verde" type="button" data-finalizar>Finalizar compra</button>
+      </div>
+    </section>
+  </div>
+</dialog>
+
+<!-- CONFIRMAÇÃO -->
+<dialog id="rsvp" aria-labelledby="t-rsvp">
+  <button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div class="janela">
+    <form class="caixa" novalidate>
+      <img class="caixa-floral" src="img/floral.webp" alt="" width="592" height="270">
+      <h2 id="t-rsvp">Confirmação de presença</h2>
+      <p class="caixa-sub">Responda até 14 de setembro.</p>
+      <fieldset>
+        <legend>Você poderá comparecer no dia 14 de outubro, às 16h?</legend>
+        <label class="op"><input type="radio" name="comparecera" value="sim" required> Sim</label>
+        <label class="op"><input type="radio" name="comparecera" value="nao"> Não</label>
+      </fieldset>
+      <fieldset>
+        <label class="campo" for="nome">Nome completo:</label>
+        <input type="text" id="nome" name="nome" autocomplete="off" required minlength="3" maxlength="120" aria-describedby="nome-dica">
+        <small class="nota" id="nome-dica">Comece a digitar e toque no seu nome na lista de convidados.</small>
+        <div class="sugestoes" role="group" aria-label="Convidados encontrados" data-sugestoes hidden></div>
+      </fieldset>
+      <fieldset>
+        <label class="campo" for="telefone">Celular (com DDD):</label>
+        <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="(21) 99999-9999">
+        <small class="nota">Para identificar sua confirmação e os noivos falarem com você, se precisarem.</small>
+      </fieldset>
+      <div data-extras hidden>
+        <fieldset>
+          <legend>Você virá com acompanhante?</legend>
+          <label class="op"><input type="radio" name="temAcomp" value="sim"> Sim</label>
+          <label class="op"><input type="radio" name="temAcomp" value="nao" checked> Não</label>
+        </fieldset>
+        <fieldset data-acomp hidden>
+          <label class="campo" for="acompanhante">Nome completo do acompanhante <b>(máximo de 1 acompanhante)</b></label>
+          <input type="text" id="acompanhante" name="acompanhante" maxlength="120">
+        </fieldset>
+        <fieldset>
+          <label class="campo" for="crianca">Nome completo do acompanhante infantil/juvenil <b>(máximo de 1 criança/adolescente)</b></label>
+          <input type="text" id="crianca" name="crianca" maxlength="120" disabled>
+          <label class="op"><input type="checkbox" name="semCrianca" checked> Sem acompanhante</label>
+        </fieldset>
+      </div>
+      <fieldset>
+        <label class="campo" for="recado">Deixe um recado para os noivos <b>(opcional)</b></label>
+        <textarea class="recado" id="recado" name="recado" maxlength="500" rows="3"></textarea>
+      </fieldset>
+      <div class="armadilha" aria-hidden="true"><label>Site <input type="text" name="site" tabindex="-1" autocomplete="off"></label></div>
+      <p class="erro" role="alert" data-erro></p>
+      <button class="btn btn-verde" type="submit">Enviar</button>
+    </form>
+  </div>
+</dialog>
+
+<!-- CERTEZA ANTES DE ENVIAR (a resposta não pode ser alterada depois) -->
+<dialog id="certeza" class="alerta" aria-labelledby="t-certeza">
+  <h2 id="t-certeza">Tem certeza das suas escolhas?</h2>
+  <dl class="resumo" data-resumo></dl>
+  <p class="aviso-final">Após a confirmação, <b>não será mais possível mudar sua decisão</b>. Caso mude de ideia, entre em contato com os noivos.</p>
+  <button class="btn btn-verde" type="button" data-confirmar>Sim, confirmar</button>
+  <button class="btn btn-contorno" type="button" data-fechar>Voltar e revisar</button>
+</dialog>
+
+<!-- PÓS-CONFIRMAÇÃO: PRESENTE -->
+<dialog id="obrigado" aria-labelledby="t-obrigado">
+  <button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div class="janela verde">
+    <img class="presente-ico" src="img/presente.webp" alt="" width="360" height="379">
+    <h2 id="t-obrigado">Obrigado!</h2>
+    <p data-msg></p>
+    <p><button class="btn btn-branco" type="button" data-abrir-lista>Ver lista de presentes</button></p>
+    <button class="btn btn-contorno-claro" data-fechar>Fechar</button>
+  </div>
+</dialog>
+
+<!-- PIX -->
+<dialog id="pix" aria-labelledby="t-pix">
+  <button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div class="janela">
+    <div class="caixa">
+      <h2 id="t-pix">Presente via Pix</h2>
+      <ul class="pix-itens" data-pix-itens hidden></ul>
+      <label class="valor-campo">R$ <input type="number" min="1" max="100000" step="0.01" inputmode="decimal" aria-label="Valor do presente" data-valor-input></label>
+      <fieldset class="formas" data-formas hidden>
+        <legend>Como você quer presentear?</legend>
+        <label class="op"><input type="radio" name="forma" value="pix" checked> Pix</label>
+        <label class="op"><input type="radio" name="forma" value="cartao"> Cartão de crédito ou débito</label>
+      </fieldset>
+      <div class="pix-grid" data-so-pix>
+        <div class="qr" data-qr></div>
+        <div>
+          <ol class="passos">
+            <li>Toque em <b>Copiar código Pix</b>.</li>
+            <li>No app do seu banco, vá em Pix → <b>Pix Copia e Cola</b>.</li>
+            <li>Cole o código e confirme.</li>
+          </ol>
+          <textarea class="pix-codigo" rows="4" readonly aria-label="Código Pix copia e cola" data-codigo></textarea>
+        </div>
+      </div>
+      <button class="btn btn-verde" type="button" data-copiar data-so-pix>Copiar código Pix</button>
+      <fieldset style="margin:24px 0 0">
+        <label class="campo" for="pix-nome">Seu nome (para os noivos saberem quem presenteou):</label>
+        <input type="text" id="pix-nome" maxlength="120" autocomplete="name" data-pix-nome>
+      </fieldset>
+      <fieldset style="margin:16px 0 0">
+        <label class="campo" for="pix-recado">Recado para os noivos <b>(opcional)</b>:</label>
+        <textarea class="recado" id="pix-recado" maxlength="500" rows="3" data-pix-recado></textarea>
+      </fieldset>
+      <div class="armadilha" aria-hidden="true"><label>Site <input type="text" tabindex="-1" autocomplete="off" data-pix-site></label></div>
+      <!-- Formulário seguro do Mercado Pago: os dados do cartão vão direto para eles, nunca para este site -->
+      <div class="cartao-mp" id="cartao-mp" data-so-cartao hidden></div>
+      <button class="btn btn-escuro" type="button" data-paguei data-so-pix>Já fiz o Pix</button>
+      <p class="erro ok" role="status" data-pix-msg></p>
+      <div class="aviso" role="status" aria-live="polite" data-aviso></div>
+    </div>
+  </div>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

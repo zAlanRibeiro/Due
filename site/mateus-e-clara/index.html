@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mateus & Clara · Casamento</title>
+<meta name="description" content="Convite de casamento de Mateus e Clara — 22 de abril, 18h00, Espaço Villa Serena, Jardim Botânico, Rio de Janeiro.">
+<meta name="theme-color" content="#420000">
+<link rel="icon" href="img/folha.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mateus & Clara · Casamento">
+<meta property="og:description" content="22 de abril, às 18h, no Espaço Villa Serena (Jardim Botânico, RJ). Confirme sua presença até 7 de abril.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@400;500&family=Mrs+Saint+Delafield&family=Barlow+Semi+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="vendor/qrcode.js" defer></script> <!-- qrcode-generator 1.4.4 (MIT), servido daqui: página de pagamento não depende de CDN externo -->
+<script>document.documentElement.classList.add('js')</script>
+<script src="../demo.js"></script> <!-- modo demonstração do portfólio -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <section class="hero conteudo">
+    <div class="titulo">
+      <div class="arco" aria-hidden="true"><img class="folha" src="img/folha.png" alt="" width="320" height="540"></div>
+      <h1 class="nomes">MATEUS<span class="e"><span class="amp">&amp;</span><span class="script">casamento</span></span>CLARA</h1>
+    </div>
+    <div class="info">
+      <p class="celebre">Celebre conosco esse momento</p>
+      <p class="data">22 de abril</p>
+      <p class="hora">Das 18h00 às 22h00</p>
+      <div class="ornamento" aria-hidden="true">♥</div>
+      <p class="endereco">Espaço Villa Serena – Rua das Hortênsias, 120 – Jardim Botânico, Rio de Janeiro – RJ</p>
+      <p class="traje"><b>Traje:</b> Social <span>· Evite branco, é a cor da noiva ♥</span></p>
+      <div class="prazo" data-prazo>
+        <p class="prazo-titulo">Confirme sua presença até <b>7 de abril</b></p>
+        <div class="relogio" role="timer" aria-label="Tempo restante para confirmar presença">
+          <span><b>00</b>dias</span><span><b>00</b>horas</span><span><b>00</b>min</span><span><b>00</b>seg</span>
+        </div>
+      </div>
+      <div class="acoes">
+        <a class="btn btn-contorno" data-agenda target="_blank" rel="noopener">＋ Salvar na agenda</a>
+        <a class="btn btn-contorno" href="#local">Ver local</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="presentes" aria-labelledby="t-presentes">
+    <img class="aliancas" src="img/aliancas.png" alt="" width="260" height="180" data-revelar>
+    <h2 id="t-presentes" data-revelar>Ajude na nossa lua de mel</h2>
+    <p class="sub" data-revelar>Sua presença é o nosso maior presente. Se quiser nos presentear, escolha um valor e envie por Pix.</p>
+    <div class="grade" data-grade></div>
+    <button class="outro" data-outro data-revelar>Prefere outro valor?</button>
+  </section>
+
+  <section class="local" id="local" aria-labelledby="t-local">
+    <div class="conteudo">
+      <iframe data-revelar title="Mapa do Jardim Botânico, Rio de Janeiro" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Jardim%20Bot%C3%A2nico%2C%20Rio%20de%20Janeiro&z=15&output=embed"></iframe>
+      <div class="local-info" data-revelar style="--i:2">
+        <h2 id="t-local">O local</h2>
+        <p>Espaço Villa Serena – Rua das Hortênsias, 120 – Jardim Botânico, Rio de Janeiro – RJ</p>
+        <div class="acoes">
+          <a class="btn btn-verde" href="https://www.google.com/maps/dir/?api=1&destination=Jardim%20Bot%C3%A2nico%2C%20Rio%20de%20Janeiro" target="_blank" rel="noopener">Como chegar</a>
+          <a class="btn btn-contorno" href="https://waze.com/ul?q=Jardim%20Bot%C3%A2nico%2C%20Rio%20de%20Janeiro&navigate=yes" target="_blank" rel="noopener">Waze</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer data-revelar><div class="ornamento" aria-hidden="true">♥</div><span class="script">Mateus & Clara</span>Esperamos por você!</footer>
+</main>
+
+<button class="btn btn-vinho flutuante" data-abrir-rsvp>Confirmar presença</button>
+
+<!-- CONFIRMAÇÃO -->
+<dialog id="rsvp" aria-labelledby="t-rsvp">
+  <button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div class="janela">
+    <form class="caixa" novalidate>
+      <h2 id="t-rsvp">Confirmação de presença</h2>
+      <p style="text-align:center;margin:-12px 0 20px;color:var(--suave)">Responda até 7 de abril.</p>
+      <fieldset>
+        <legend>Você poderá comparecer na data de 22 de abril às 18h00?</legend>
+        <label class="op"><input type="radio" name="comparecera" value="sim" required> Sim</label>
+        <label class="op"><input type="radio" name="comparecera" value="nao"> Não</label>
+      </fieldset>
+      <fieldset>
+        <label class="campo" for="nome">Nome completo:</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required minlength="3" maxlength="120">
+      </fieldset>
+      <fieldset>
+        <label class="campo" for="telefone">Telefone (com DDD):</label>
+        <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="(21) 98765-4321">
+        <small style="display:block;margin-top:6px;color:var(--suave)">Para os noivos falarem com você, se precisar.</small>
+      </fieldset>
+      <div data-extras hidden>
+        <fieldset>
+          <legend>Você virá com acompanhante? <b>(Válido somente para familiares dos noivos)</b></legend>
+          <label class="op"><input type="radio" name="temAcomp" value="sim"> Sim</label>
+          <label class="op"><input type="radio" name="temAcomp" value="nao" checked> Não</label>
+        </fieldset>
+        <fieldset data-acomp hidden>
+          <label class="campo" for="acompanhante">Nome completo do acompanhante <b>(máximo de 1 acompanhante)</b></label>
+          <input type="text" id="acompanhante" name="acompanhante" maxlength="120">
+        </fieldset>
+        <fieldset>
+          <label class="campo" for="crianca">Nome completo do acompanhante infantil/juvenil <b>(máximo de 1 criança/adolescente)</b></label>
+          <input type="text" id="crianca" name="crianca" maxlength="120" disabled>
+          <label class="op"><input type="checkbox" name="semCrianca" checked> Sem acompanhante</label>
+        </fieldset>
+      </div>
+      <fieldset>
+        <label class="campo" for="recado">Deixe um recado para os noivos <b>(opcional)</b></label>
+        <textarea class="recado" id="recado" name="recado" maxlength="500" rows="3"></textarea>
+      </fieldset>
+      <div class="armadilha" aria-hidden="true"><label>Site <input type="text" name="site" tabindex="-1" autocomplete="off"></label></div>
+      <p class="erro" role="alert" data-erro></p>
+      <button class="btn btn-verde" type="submit">Enviar</button>
+    </form>
+  </div>
+</dialog>
+
+<!-- CERTEZA ANTES DE ENVIAR (a resposta não pode ser alterada depois) -->
+<dialog id="certeza" class="alerta" aria-labelledby="t-certeza">
+  <h2 id="t-certeza">Tem certeza das suas escolhas?</h2>
+  <dl class="resumo" data-resumo></dl>
+  <p class="aviso-final">Após a confirmação, <b>não será mais possível mudar sua decisão</b>. Caso mude de ideia, entre em contato com os noivos para uma tentativa de realocação.</p>
+  <button class="btn btn-verde" type="button" data-confirmar>Sim, confirmar</button>
+  <button class="btn btn-contorno" type="button" data-fechar>Voltar e revisar</button>
+</dialog>
+
+<!-- PÓS-CONFIRMAÇÃO: PRESENTE -->
+<dialog id="obrigado" aria-labelledby="t-obrigado">
+  <button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div class="janela vinho">
+    <img class="aliancas" src="img/aliancas.png" alt="" width="260" height="180">
+    <h2 id="t-obrigado">Ajude na nossa lua de mel</h2>
+    <p data-msg></p>
+    <div class="grade" data-grade></div>
+    <button class="outro" data-outro>Prefere outro valor?</button>
+    <br><button class="btn btn-branco" data-fechar>Não, obrigado</button>
+  </div>
+</dialog>
+
+<!-- PIX -->
+<dialog id="pix" aria-labelledby="t-pix">
+  <button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <div class="janela">
+    <div class="caixa">
+      <h2 id="t-pix">Presente via Pix</h2>
+      <label class="valor-campo">R$ <input type="number" min="1" max="100000" step="1" inputmode="numeric" aria-label="Valor do presente" data-valor-input></label>
+      <div class="pix-grid">
+        <div class="qr" data-qr></div>
+        <div>
+          <ol class="passos">
+            <li>Toque em <b>Copiar código Pix</b>.</li>
+            <li>No app do seu banco, vá em Pix → <b>Pix Copia e Cola</b>.</li>
+            <li>Cole o código e confirme.</li>
+          </ol>
+          <textarea class="pix-codigo" rows="4" readonly aria-label="Código Pix copia e cola" data-codigo></textarea>
+        </div>
+      </div>
+      <button class="btn btn-verde" type="button" data-copiar>Copiar código Pix</button>
+      <fieldset style="margin:24px 0 0">
+        <label class="campo" for="pix-nome">Seu nome (para os noivos saberem quem presenteou):</label>
+        <input type="text" id="pix-nome" maxlength="120" autocomplete="name" data-pix-nome>
+      </fieldset>
+      <fieldset style="margin:16px 0 0">
+        <label class="campo" for="pix-recado">Recado para os noivos <b>(opcional)</b>:</label>
+        <textarea class="recado" id="pix-recado" maxlength="500" rows="3" data-pix-recado></textarea>
+      </fieldset>
+      <div class="armadilha" aria-hidden="true"><label>Site <input type="text" tabindex="-1" autocomplete="off" data-pix-site></label></div>
+      <button class="btn btn-vinho" type="button" data-paguei>Já fiz o Pix</button>
+      <p class="erro ok" role="status" data-pix-msg></p>
+      <div class="aviso" role="status" aria-live="polite" data-aviso></div>
+    </div>
+  </div>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
